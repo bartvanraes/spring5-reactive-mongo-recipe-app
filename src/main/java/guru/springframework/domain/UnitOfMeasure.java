@@ -17,6 +17,6 @@ import java.util.UUID;
 public class UnitOfMeasure {
 
     @Id
-    private String id = UUID.randomUUID().toString();
+    private String id;
     private String description;
 }
