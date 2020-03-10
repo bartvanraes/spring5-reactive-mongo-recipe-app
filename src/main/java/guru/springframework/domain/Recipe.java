@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * Created by jt on 6/13/17.
@@ -18,7 +19,7 @@ import java.util.Set;
 public class Recipe {
 
     @Id
-    private String id;
+    private String id = UUID.randomUUID().toString();
     private String description;
     private Integer prepTime;
     private Integer cookTime;
