@@ -13,10 +13,8 @@ import java.util.UUID;
  */
 @Getter
 @Setter
-@Document
 public class Notes {
-
     @Id
-    private String id = UUID.randomUUID().toString();
+    private String id;
     private String recipeNotes;
 }

@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Recipe {
 
     @Id
-    private String id = UUID.randomUUID().toString();
+    private String id;
     private String description;
     private Integer prepTime;
     private Integer cookTime;

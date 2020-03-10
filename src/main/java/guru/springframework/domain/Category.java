@@ -17,7 +17,7 @@ import java.util.UUID;
 @Document
 public class Category {
     @Id
-    private String id = UUID.randomUUID().toString();
+    private String id;
     private String description;
 
     @DBRef

@@ -13,7 +13,6 @@ import java.util.UUID;
  */
 @Getter
 @Setter
-@Document
 public class Ingredient {
 
     private String id = UUID.randomUUID().toString();
