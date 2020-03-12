@@ -117,7 +117,7 @@ public class RecipeServiceImplTest {
         String idToDelete = "2";
 
         //when
-        recipeService.deleteById(idToDelete).block();
+        recipeService.deleteById(idToDelete);
 
         //no 'when', since method has void return type
 

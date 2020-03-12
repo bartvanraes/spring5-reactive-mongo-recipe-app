@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import reactor.core.publisher.Flux;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -62,7 +63,7 @@ public class IndexControllerTest {
 
         recipes.add(recipe);
 
-        when(recipeService.getRecipes()).thenReturn(Flux.just(recipe));
+        when(recipeService.getRecipes()).thenReturn(Flux.fromIterable(recipes));
 
         ArgumentCaptor<Flux<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Flux.class);
 
@@ -74,8 +75,9 @@ public class IndexControllerTest {
         assertEquals("index", viewName);
         verify(recipeService, times(1)).getRecipes();
         verify(model, times(1)).addAttribute(eq("recipes"), argumentCaptor.capture());
-        Flux<Recipe> setInController = argumentCaptor.getValue();
-        //assertEquals(2, setInController.collect().size());
+        Flux<Recipe> fluxInController = argumentCaptor.getValue();
+        List<Recipe> recipeList = fluxInController.collectList().block();
+        assertEquals(2, recipeList.size());
     }
 
 }
