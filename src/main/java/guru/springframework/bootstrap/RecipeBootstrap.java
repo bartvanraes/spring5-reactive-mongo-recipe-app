@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Created by jt on 6/13/17.
@@ -40,6 +41,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         loadCategories();
         loadUom();
         recipeRepository.saveAll(getRecipes());
+        recipeRepository.findAll().forEach(recipe -> {
+            log.debug(recipe.getId());
+        });
         log.debug("Loading Bootstrap Data");
 
     }
